@@ -1,1 +1,52 @@
 // app global css in SCSS form
+a {
+  color: $primary;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.cell-width {
+  width: 250px;
+  /*
+  @media (max-width: $breakpoint-lg-min) {
+    width: 175px;
+  }
+  */
+}
+.cell-width-md {
+  width: 135px;
+}
+.cell-width-sm {
+  width: 120px;
+}
+.cell-width-ico {
+  width: 25px;
+}
+
+.table-v1 {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.scrollTable {
+  container-type: inline-size;
+  container-name: tableContainer;
+}
+
+@container tableContainer (max-width: 500px) {
+
+
+
+  .table-main-info .cell-width {
+    width: auto;
+  }
+}
+
+.scrollTable {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+
