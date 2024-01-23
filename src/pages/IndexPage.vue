@@ -1,10 +1,11 @@
 <template>
   <q-page class="" :class="$q.screen.gt.lg ? 'q-px-xl q-py-lg' : 'q-px-sm q-py-sm'">
-    <h1 class="text-h5 text-bold q-mt-none">neviditelna-univerzita</h1>
+    <h1 class="text-h5 text-bold q-mt-none" data-cy="heading">neviditelna-univerzita</h1>
     <div class="q-mb-md">
       <q-toggle
         label="Verbose view"
         v-model="verboseView"
+        data-cy="verboseViewButton"
       />
     </div>
 
@@ -13,13 +14,13 @@
         <q-card class="q-mb-lg">
           <q-card-section>
             <div class="scrollTable">
-              <table class="text-left table-main-info">
+              <table class="text-left table-main-info" data-cy="authinfo">
                 <tr>
                   <th class="cell-width">
                     <strong>Authinfo:</strong>
                   </th>
                   <td>
-                    <q-btn dense class="q-px-lg q-py-none" color="primary" label="Show" @click="authinfoDialog = !authinfoDialog" />
+                    <q-btn dense class="q-px-lg q-py-none" color="primary" label="Show" @click="authinfoDialog = !authinfoDialog" data-cy="secret" />
                   </td>
                 </tr>
                 <tr>
@@ -42,7 +43,7 @@
           <q-card-section class="q-py-sm">
             <div class="scrollTable">
               <table class="text-left table-v1">
-                <tr>
+                <tr data-cy="event-create">
                   <th class="cell-width">
                     <strong>Create date:</strong>
                   </th>
@@ -93,7 +94,7 @@
             <strong>State flags:</strong>
           </q-card-section>
           <q-card-section class="q-py-sm" v-if="domainData.state_flags">
-            <div style="max-width: 100%; overflow-x: scroll;">
+            <div class="scrollTable">
               <div v-for="(flag, index) in domainData?.state_flags?.flags" :key="index">
                 <template v-if="verboseView || flag.active">
                   <q-icon
@@ -155,7 +156,7 @@
           </q-card-section>
         </q-card>
 
-        <q-card class="q-mb-lg" v-if="!verboseView">
+        <q-card class="q-mb-lg" v-if="!verboseView" data-cy="verboseViewInactive">
           <q-card-section class="bg-grey-3 q-py-sm">
             <strong>Administrative contacts:</strong>
           </q-card-section>
@@ -175,7 +176,7 @@
 
         <div v-if="verboseView">
 
-          <q-card class="q-mb-lg" v-for="(contact, index) in domainData?.administrative_contacts" :key="index">
+          <q-card class="q-mb-lg" v-for="(contact, index) in domainData?.administrative_contacts" :key="index" data-cy="verboseViewActive">
             <q-card-section class="bg-grey-3 q-py-sm">
               <strong>Administrative contact:</strong>
             </q-card-section>
@@ -290,12 +291,12 @@
       </div>
     </div>
 
-    <q-dialog v-model="authinfoDialog" size="">
+    <q-dialog v-model="authinfoDialog" data-cy="secretModal" >
       <q-card>
         <q-card-section class="row items-center bg-primary text-white q-py-sm">
           <div class="text-h6 q-mr-xl">Secrect password</div>
           <q-space />
-          <q-btn icon="close" flat round dense v-close-popup />
+          <q-btn icon="close" data-cy="close-modal" flat round dense v-close-popup />
         </q-card-section>
 
         <q-card-section>
