@@ -1,6 +1,6 @@
 <template>
   <q-page class="" :class="$q.screen.gt.lg ? 'q-px-xl q-py-lg' : 'q-px-sm q-py-sm'">
-    <h1 class="text-h5 text-bold q-mt-none" data-cy="heading">neviditelna-univerzita</h1>
+    <h1 class="text-h5 text-bold q-mt-none" data-cy="heading">{{ domainData?.fqdn }}</h1>
     <div class="q-mb-md">
       <q-toggle
         label="Verbose view"

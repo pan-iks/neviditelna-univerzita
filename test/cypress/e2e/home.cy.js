@@ -6,11 +6,11 @@ describe('Landing', () => {
   // test if json data loaded correctly
   it('has very important information', () => {
     cy.dataCy('heading')
-      .should('contain', 'neviditelna-univerzita')
+      .should('contain', 'neviditelna-univerzita.cz')
 
     cy.dataCy('authinfo')
       .should('contain', 'Jan 15, 2021, 12:00:00 AM')
-    
+
     cy.dataCy('event-create')
       .should('contain', 'Jan 14, 2002, 2:56:00 PM')
   })
