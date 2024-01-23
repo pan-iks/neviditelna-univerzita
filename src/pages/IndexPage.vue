@@ -93,7 +93,7 @@
             <strong>State flags:</strong>
           </q-card-section>
           <q-card-section class="q-py-sm" v-if="domainData.state_flags">
-            <div style="max-width: 100%; overflow-x: scroll;">
+            <div class="scrollTable">
               <div v-for="(flag, index) in domainData?.state_flags?.flags" :key="index">
                 <template v-if="verboseView || flag.active">
                   <q-icon
